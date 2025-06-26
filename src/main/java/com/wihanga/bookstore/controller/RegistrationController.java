@@ -19,6 +19,7 @@ public class RegistrationController {
         if (userRepository.findByEmail(user.getEmail()) != null) {
             return ResponseEntity.badRequest().body("Email already registered");
         }
+        user.setRole("CUSTOMER"); 
         userRepository.save(user);
         return ResponseEntity.ok("Registration successful");
     }
